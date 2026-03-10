@@ -1,0 +1,7 @@
+{
+    "name": "badhan/duzone",
+    "description": "Badhan DU Zone - Blood Requisition Management System",
+    "require": {
+        "dompdf/dompdf": "^2.0"
+    }
+}
