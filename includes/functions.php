@@ -55,6 +55,47 @@ function updateRequisitionComment(int $id, string $comment, string $managedBy, i
 }
 
 /**
+ * Admin: Update ALL fields of a requisition.
+ */
+function updateRequisitionFull(int $id, array $data): bool
+{
+    $pdo = getDBConnection();
+    $stmt = $pdo->prepare(
+        "UPDATE requisitions SET 
+            patient_name = :patient_name,
+            patient_age = :patient_age,
+            blood_group = :blood_group,
+            quantity = :quantity,
+            component = :component,
+            hospital_name = :hospital_name,
+            problem = :problem,
+            attendant_name = :attendant_name,
+            attendant_blood_group = :attendant_blood_group,
+            attendant_address = :attendant_address,
+            attendant_contact = :attendant_contact,
+            comment = :comment,
+            managed_by = :managed_by
+         WHERE id = :id"
+    );
+    return $stmt->execute([
+        ':patient_name'          => $data['patient_name'],
+        ':patient_age'           => $data['patient_age'],
+        ':blood_group'           => $data['blood_group'],
+        ':quantity'              => $data['quantity'],
+        ':component'             => $data['component'],
+        ':hospital_name'         => $data['hospital_name'],
+        ':problem'               => $data['problem'],
+        ':attendant_name'        => $data['attendant_name'],
+        ':attendant_blood_group' => $data['attendant_blood_group'],
+        ':attendant_address'     => $data['attendant_address'],
+        ':attendant_contact'     => $data['attendant_contact'],
+        ':comment'               => $data['comment'],
+        ':managed_by'            => $data['managed_by'],
+        ':id'                    => $id,
+    ]);
+}
+
+/**
  * Get requisitions by date for a specific user.
  */
 function getRequisitionsByDate(string $date, int $userId): array
@@ -65,7 +106,7 @@ function getRequisitionsByDate(string $date, int $userId): array
          FROM requisitions r 
          JOIN users u ON r.created_by = u.id
          WHERE DATE(r.created_at) = :date AND r.created_by = :user_id
-         ORDER BY r.created_at DESC"
+         ORDER BY r.id ASC"
     );
     $stmt->execute([':date' => $date, ':user_id' => $userId]);
     return $stmt->fetchAll();
@@ -82,7 +123,7 @@ function getAllRequisitionsByDate(string $date): array
          FROM requisitions r 
          JOIN users u ON r.created_by = u.id
          WHERE DATE(r.created_at) = :date
-         ORDER BY r.created_at DESC"
+         ORDER BY r.id ASC"
     );
     $stmt->execute([':date' => $date]);
     return $stmt->fetchAll();
@@ -99,7 +140,7 @@ function getAllRequisitionsByMonth(string $yearMonth): array
          FROM requisitions r 
          JOIN users u ON r.created_by = u.id
          WHERE DATE_FORMAT(r.created_at, '%Y-%m') = :ym
-         ORDER BY r.created_at DESC"
+         ORDER BY r.id ASC"
     );
     $stmt->execute([':ym' => $yearMonth]);
     return $stmt->fetchAll();
@@ -167,7 +208,7 @@ function getMemberRequisitionsForDate(string $date, int $currentUserId): array
          FROM requisitions r 
          JOIN users u ON r.created_by = u.id
          WHERE DATE(r.created_at) = :date
-         ORDER BY r.created_at DESC"
+         ORDER BY r.id ASC"
     );
     $stmt->execute([':date' => $date]);
     $all = $stmt->fetchAll();

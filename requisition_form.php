@@ -22,14 +22,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $patient_name = trim($_POST['patient_name'] ?? '');
     $patient_age  = (int) ($_POST['patient_age'] ?? 0);
     $blood_group  = $_POST['blood_group'] ?? '';
-    $quantity     = (int) ($_POST['quantity'] ?? 1);
+    $quantity     = trim($_POST['quantity'] ?? '');
     $component    = $_POST['component'] ?? '';
     $hospital     = $_POST['hospital_name'] ?? '';
     $hospital_custom = trim($_POST['hospital_custom'] ?? '');
     $problem      = trim($_POST['problem'] ?? '');
 
     $att_name     = trim($_POST['attendant_name'] ?? '');
-    $att_bg       = $_POST['attendant_blood_group'] ?? '';
+    $att_bg       = trim($_POST['attendant_blood_group'] ?? '');
     $att_address  = trim($_POST['attendant_address'] ?? '');
     $att_contact  = trim($_POST['attendant_contact'] ?? '');
 
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($patient_name)) $errors[] = 'Patient name is required.';
     if ($patient_age < 0 || $patient_age > 150) $errors[] = 'Valid patient age is required.';
     if (!in_array($blood_group, ['A+','A-','B+','B-','AB+','AB-','O+','O-'])) $errors[] = 'Invalid blood group.';
-    if ($quantity < 1) $errors[] = 'Quantity must be at least 1.';
+    if (empty($quantity)) $errors[] = 'Quantity is required.';
     if (!in_array($component, ['Whole Blood','RCC/PCV/PRBC','Platelet','FFP','Cryoprecipitate'])) $errors[] = 'Invalid component.';
     
     // Hospital
@@ -54,7 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($problem)) $errors[] = 'Problem description is required.';
     if (empty($att_name)) $errors[] = 'Attendant name is required.';
-    if (!in_array($att_bg, ['A+','A-','B+','B-','AB+','AB-','O+','O-','Don\'t Know'])) $errors[] = 'Invalid attendant blood group.';
+    $validAttBg = ['A+','A-','B+','B-','AB+','AB-','O+','O-',''];
+    if (!in_array($att_bg, $validAttBg)) $errors[] = 'Invalid attendant blood group.';
+    if ($att_bg === '') $att_bg = null;
     if (empty($att_address)) $errors[] = 'Attendant address is required.';
     if (empty($att_contact)) $errors[] = 'Attendant contact number is required.';
 
@@ -130,9 +132,10 @@ $hospitals   = ['DMC', 'PG', 'Birdem', 'Burn Institute', 'Other'];
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="quantity">Quantity (Bags) *</label>
-                    <input type="number" id="quantity" name="quantity" class="form-control"
-                           min="1" value="<?= htmlspecialchars($old['quantity'] ?? '1') ?>" required>
+                    <label for="quantity">Quantity *</label>
+                    <input type="text" id="quantity" name="quantity" class="form-control"
+                           value="<?= htmlspecialchars($old['quantity'] ?? '') ?>" 
+                           placeholder="e.g. 2 bags, 1 bag + 1 platelet" required>
                 </div>
                 <div class="form-group">
                     <label for="component">Component *</label>
@@ -180,12 +183,13 @@ $hospitals   = ['DMC', 'PG', 'Birdem', 'Burn Institute', 'Other'];
                            value="<?= htmlspecialchars($old['attendant_name'] ?? '') ?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="attendant_blood_group">Attendant Blood Group *</label>
-                    <select id="attendant_blood_group" name="attendant_blood_group" class="form-control" required>
-                        <option value="">-- Select --</option>
+                    <label for="attendant_blood_group">Attendant Blood Group</label>
+                    <select id="attendant_blood_group" name="attendant_blood_group" class="form-control">
+                        <option value="">-- Select (Optional) --</option>
                         <?php foreach ($bloodGroups as $bg): ?>
                             <option value="<?= $bg ?>" <?= ($old['attendant_blood_group'] ?? '') === $bg ? 'selected' : '' ?>><?= $bg ?></option>
                         <?php endforeach; ?>
+                        <option value="Don't Know" <?= ($old['attendant_blood_group'] ?? '') === "Don't Know" ? 'selected' : '' ?>>Don't Know</option>
                     </select>
                 </div>
                 <div class="form-group">

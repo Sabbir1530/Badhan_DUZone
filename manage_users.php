@@ -187,7 +187,7 @@ $csrfToken = generateCSRFToken();
                 <div class="form-group">
                     <label for="new_name">Full Name *</label>
                     <input type="text" id="new_name" name="name" class="form-control" 
-                           placeholder="e.g. John Doe" required>
+                           placeholder="e.g. Sabbir Ahmed" required>
                 </div>
                 <div class="form-group">
                     <label for="new_password">Password *</label>

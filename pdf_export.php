@@ -116,7 +116,7 @@ if (empty($requisitions)) {
             <td>' . htmlspecialchars($r['patient_name']) . '</td>
             <td>' . $r['patient_age'] . '</td>
             <td><strong>' . htmlspecialchars($r['blood_group']) . '</strong></td>
-            <td>' . $r['quantity'] . '</td>
+            <td>' . htmlspecialchars($r['quantity']) . '</td>
             <td>' . htmlspecialchars($r['component']) . '</td>
             <td>' . htmlspecialchars($r['hospital_name']) . '</td>
             <td>' . htmlspecialchars(mb_strimwidth($r['problem'], 0, 30, '...')) . '</td>

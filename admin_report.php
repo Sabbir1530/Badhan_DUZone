@@ -136,12 +136,12 @@ $stats = calculateBloodGroupStats($requisitions);
                         <td><?= htmlspecialchars($r['patient_name']) ?></td>
                         <td><?= $r['patient_age'] ?></td>
                         <td><strong><?= htmlspecialchars($r['blood_group']) ?></strong></td>
-                        <td><?= $r['quantity'] ?></td>
+                        <td><?= htmlspecialchars($r['quantity']) ?></td>
                         <td><?= htmlspecialchars($r['component']) ?></td>
                         <td><?= htmlspecialchars($r['hospital_name']) ?></td>
                         <td><?= htmlspecialchars(mb_strimwidth($r['problem'], 0, 50, '...')) ?></td>
                         <td><?= htmlspecialchars($r['attendant_name']) ?></td>
-                        <td><?= htmlspecialchars($r['attendant_blood_group']) ?></td>
+                        <td><?= htmlspecialchars($r['attendant_blood_group'] ?? '—') ?></td>
                         <td><?= htmlspecialchars($r['attendant_address'] ?? '') ?></td>
                         <td><?= htmlspecialchars($r['attendant_contact']) ?></td>
                         <td>

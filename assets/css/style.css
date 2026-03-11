@@ -366,6 +366,74 @@ table tbody tr:nth-child(even):hover {
 .status-others   { color: var(--info); font-weight: 600; }
 .status-pending  { color: var(--gray); font-style: italic; }
 
+/* ---- Donation Info Cards ---- */
+.donation-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+.donation-info-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s;
+}
+.donation-info-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+.donation-info-header {
+    background: var(--secondary);
+    color: var(--white);
+    padding: 0.8rem 1.2rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+.donation-info-body {
+    padding: 1.2rem;
+}
+.info-item {
+    margin-bottom: 0.8rem;
+}
+.info-item:last-child {
+    margin-bottom: 0;
+}
+.info-label {
+    font-weight: 700;
+    color: var(--secondary);
+    display: block;
+    margin-bottom: 0.2rem;
+    font-size: 0.92rem;
+}
+.info-value {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+.cannot-donate-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.3rem 0 0 0;
+}
+.cannot-donate-list li {
+    padding: 0.3rem 0 0.3rem 1.4rem;
+    position: relative;
+    font-size: 0.88rem;
+    color: #555;
+    border-bottom: 1px solid #f0f0f0;
+}
+.cannot-donate-list li:last-child {
+    border-bottom: none;
+}
+.cannot-donate-list li::before {
+    content: "✕";
+    position: absolute;
+    left: 0;
+    color: var(--danger);
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
     .navbar {
@@ -389,6 +457,9 @@ table tbody tr:nth-child(even):hover {
         display: block;
     }
     .form-row, .form-row-3 {
+        grid-template-columns: 1fr;
+    }
+    .donation-info-grid {
         grid-template-columns: 1fr;
     }
     .filter-bar {

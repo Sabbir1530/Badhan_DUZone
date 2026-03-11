@@ -73,6 +73,126 @@ $committee = getZoneCommittee();
         </div>
     </div>
 
+    <!-- Donation Requirements by Component -->
+    <div class="card">
+        <div class="card-header">📋 Donation Requirements by Component</div>
+        <div class="donation-info-grid">
+
+            <!-- Whole Blood -->
+            <div class="donation-info-card">
+                <div class="donation-info-header">🩸 Whole Blood</div>
+                <div class="donation-info-body">
+                    <div class="info-item">
+                        <span class="info-label">⚖️ Minimum Weight:</span>
+                        <span class="info-value">48 kg)</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">📅 Donation Interval:</span>
+                        <span class="info-value">Minimum 90-120 days (3-4 months)</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">🚫 Cannot Donate If:</span>
+                        <ul class="cannot-donate-list">
+                            <li>Fever or active infection</li>
+                            <li>Hemoglobin below 12.5 g/dL</li>
+                            <li>Recent surgery (within 6 months)</li>
+                            <li>Pregnancy or breastfeeding</li>
+                            <li>Chronic heart or lung disease</li>
+                            <li>Hepatitis B/C or HIV positive</li>
+                            <li>On antibiotics or blood thinners</li>
+                            <li>Age below 18 or above 60</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RCC / PRBC -->
+            <div class="donation-info-card">
+                <div class="donation-info-header">🔴 RCC / Packed Red Blood Cells (PRBC)</div>
+                <div class="donation-info-body">
+                    <div class="info-item">
+                        <span class="info-label">⚖️ Minimum Weight:</span>
+                        <span class="info-value">60 kg</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">📅 Donation Interval:</span>
+                        <span class="info-value">Minimum 112 days (16 weeks) for double red cell donation</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">🚫 Cannot Donate If:</span>
+                        <ul class="cannot-donate-list">
+                            <li>Anemia or low hemoglobin (below 12.5 g/dL)</li>
+                            <li>Iron deficiency</li>
+                            <li>Sickle cell disease or trait</li>
+                            <li>Recent blood transfusion (within 12 months)</li>
+                            <li>Fever or active infection</li>
+                            <li>Severe malnutrition</li>
+                            <li>Thalassemia major</li>
+                            <li>Currently on chemotherapy or immunosuppressants</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Platelets -->
+            <div class="donation-info-card">
+                <div class="donation-info-header">🟡 Platelets</div>
+                <div class="donation-info-body">
+                    <div class="info-item">
+                        <span class="info-label">⚖️ Minimum Weight:</span>
+                        <span class="info-value">60 kg</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">📅 Donation Interval:</span>
+                        <span class="info-value">Minimum 7 days (up to 24 times/year)</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">🚫 Cannot Donate If:</span>
+                        <ul class="cannot-donate-list">
+                            <li>Platelet count below 150,000/μL</li>
+                            <li>Taken aspirin or ibuprofen in last 48 hours</li>
+                            <li>Dengue or other viral fever in past 4 weeks</li>
+                            <li>Blood clotting disorders (ITP, hemophilia)</li>
+                            <li>Active bacterial or viral infection</li>
+                            <li>Liver disease or jaundice</li>
+                            <li>On anticoagulant or antiplatelet medication</li>
+                            <li>History of certain cancers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plasma -->
+            <div class="donation-info-card">
+                <div class="donation-info-header">🟠 Plasma (FFP)</div>
+                <div class="donation-info-body">
+                    <div class="info-item">
+                        <span class="info-label">⚖️ Minimum Weight:</span>
+                        <span class="info-value">50 kg (110 lbs)</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">📅 Donation Interval:</span>
+                        <span class="info-value">Minimum 28 days</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">🚫 Cannot Donate If:</span>
+                        <ul class="cannot-donate-list">
+                            <li>Low protein levels or malnutrition</li>
+                            <li>Hepatitis B/C or HIV positive</li>
+                            <li>Liver disease or cirrhosis</li>
+                            <li>Active autoimmune disorders</li>
+                            <li>Pregnancy or recent delivery (within 6 months)</li>
+                            <li>Current use of immunosuppressive drugs</li>
+                            <li>Uncontrolled diabetes</li>
+                            <li>Severe allergic conditions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <!-- Zone Committee -->
     <div class="card">
         <div class="card-header">👥 Zone Contacts</div>
