@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $old = $_POST;
 
     $patient_name = trim($_POST['patient_name'] ?? '');
-    $patient_age  = (int) ($_POST['patient_age'] ?? 0);
+    $patient_age  = (int) ($_POST['patient_age'] ?? '');
     $blood_group  = $_POST['blood_group'] ?? '';
     $quantity     = trim($_POST['quantity'] ?? '');
     $component    = $_POST['component'] ?? '';
@@ -116,8 +116,8 @@ $hospitals   = ['DMC', 'PG', 'Birdem', 'Burn Institute', 'Other'];
                 </div>
                 <div class="form-group">
                     <label for="patient_age">Age *</label>
-                    <input type="number" id="patient_age" name="patient_age" class="form-control"
-                           min="0" max="150" value="<?= htmlspecialchars($old['patient_age'] ?? '') ?>" required>
+                    <input type="text" id="patient_age" name="patient_age" class="form-control"
+                           value="<?= htmlspecialchars($old['patient_age'] ?? '') ?>" required>
                 </div>
             </div>
 

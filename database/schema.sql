@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 CREATE TABLE IF NOT EXISTS `requisitions` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `patient_name` VARCHAR(150) NOT NULL,
-    `patient_age` INT NOT NULL,
+    `patient_age` VARCHAR(150) NOT NULL,
     `blood_group` ENUM('A+','A-','B+','B-','AB+','AB-','O+','O-') NOT NULL,
     `quantity` VARCHAR(100) NOT NULL DEFAULT '1',
     `component` ENUM('Whole Blood','RCC/PCV/PRBC','Platelet','FFP','Cryoprecipitate') NOT NULL,
